@@ -1,62 +1,70 @@
-# Lab 06 - Pre-processamento de Dados de Imagem
+# Projeto 06 - Pre-processamento de Imagens com OpenCV
 
-Projeto da disciplina ES510 (Introducao a IA - UFPE) para implementacao das tecnicas de pre-processamento apresentadas no material [ES510]_Lab6.pdf.
+Projeto do Lab 06 (ES510 - Introducao a IA, UFPE) com implementacoes de tecnicas classicas de processamento de imagens.
 
 ## Objetivo
 
-Aplicar tecnicas de processamento de imagem com OpenCV em Python, cobrindo:
+Aplicar operacoes de visao computacional em etapas:
 
-- operacoes basicas com imagens;
-- conversao de espaco de cores;
+- leitura e conversao de espaco de cores;
 - transformacoes geometricas;
 - transformacoes em escala de cinza;
 - processamento morfologico;
-- filtragem de imagens.
+- filtragem e nitidez.
 
 ## Estrutura
 
-| Arquivo | Secao do Lab | Escopo |
-|---|---|---|
-| src/a.py | 1.4.1 e 1.4.2 | Operacoes basicas e conversao de cores |
-| src/b.py | 1.4.3 | Transformacoes geometricas |
-| src/c.py | 1.4.4 | Transformacoes em escala de cinza |
-| src/d.py | 1.4.5 | Operacoes morfologicas |
-| src/e.py | 1.4.6 | Filtros e nitidez |
-| src/validate.py | Validacao | Checagem funcional das secoes |
-| Docs/[ES510]_Lab6.pdf | Referencia | Material didatico oficial |
+```text
+06/
+├── README.md
+├── requirements.txt
+├── Docs/
+│   └── [ES510]_Lab6.pdf
+└── src/
+    ├── a.py
+    ├── b.py
+    ├── c.py
+    ├── d.py
+    ├── e.py
+    ├── validate.py
+    └── data/
+        ├── panda.jpg
+        └── README.md
+```
 
 ## Requisitos
 
-- Python 3.7+
-- Dependencias em requirements.txt
+- Python 3.10+
+- numpy, matplotlib, opencv-python, ipython
 
-Instalacao:
+## Setup
 
-```bash
+No PowerShell, a partir da pasta 06:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
 ## Dataset
 
-O projeto usa a imagem panda.jpg na pasta src/data.
+O arquivo principal de entrada e src/data/panda.jpg.
 
-Download do pacote oficial:
-https://certification-data.obs.cn-north-4.myhuaweicloud.com/ENG/HCIP-AI%20EI%20Developer/V2.5/chapter2/cv.zip
-
-As instrucoes detalhadas estao em src/data/README.md.
+Se necessario, siga orientacao em src/data/README.md para obter o pacote oficial.
 
 ## Execucao
 
-Validacao automatica:
+Validacao automatica sem interface grafica:
 
-```bash
+```powershell
 cd src
 python validate.py
 ```
 
-Execucao por secao (ambiente interativo com suporte a celulas):
+Execucao por secao:
 
-```bash
+```powershell
 cd src
 python a.py
 python b.py
@@ -65,15 +73,23 @@ python d.py
 python e.py
 ```
 
-## Resultado Esperado
+## Resultado esperado
 
-- Scripts executam sem erros com o dataset configurado.
-- Saidas numericas principais seguem o PDF, incluindo:
-	- tipo e dimensao da imagem;
-	- limiar simples 127.0;
-	- limiar Otsu 108.0.
+- validacoes com mensagens [OK] para cada secao;
+- confirmacao final ALL VALIDATIONS PASSED;
+- resultados numericos coerentes com o material do laboratorio.
 
 ## Observacoes
 
-- Os arquivos seguem o estilo de laboratorio com blocos #%%.
-- Alguns blocos usam comandos tipicos de notebook/ambiente interativo.
+- os scripts usam estilo de laboratorio com #%%;
+- para reproducao fiel, execute na ordem a -> e.
+
+## Arquivos-chave
+
+- src/validate.py — validação automatizada de todas as seções
+- src/a.py — operações básicas e conversão de cores
+- src/b.py — transformações geométricas
+- src/c.py — transformações em escala de cinza
+- src/d.py — processamento morfológico
+- src/e.py — filtragem de imagens
+- src/questoes.py — respostas das questões do Lab (Otsu vs manual)

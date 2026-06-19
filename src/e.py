@@ -1,7 +1,5 @@
 #%%
-# ═══════════════════════════════════════════════════════════
-# SEÇÃO 1.4.6 - FILTRAGEM DE IMAGENS
-# ═══════════════════════════════════════════════════════════
+
 
 import cv2
 import numpy as np
@@ -12,7 +10,7 @@ import matplotlib.pyplot as plt
 
 
 #%%
-# ETAPA 1 - Aplicar filtro mediana.
+
 
 im = cv2.imread('data/panda.jpg')
 
@@ -23,8 +21,7 @@ im = cv2.cvtColor(
 
 plt.imshow(im)
 
-# Chama a API de filtro mediana
-# do OpenCV.
+
 im_medianblur = cv2.medianBlur(
     im,
     5
@@ -37,7 +34,7 @@ plt.show()
 
 
 #%%
-# ETAPA 2 - Aplicar filtro média.
+
 
 im = cv2.imread('data/panda.jpg')
 
@@ -48,8 +45,7 @@ im = cv2.cvtColor(
 
 plt.imshow(im)
 
-# Chama a API de filtro média
-# do OpenCV.
+
 im_meanblur = cv2.blur(
     im,
     (3, 3)
@@ -62,7 +58,7 @@ plt.show()
 
 
 #%%
-# ETAPA 3 - Aplicar filtro Gaussiano.
+
 
 im = cv2.imread('data/panda.jpg')
 
@@ -73,8 +69,7 @@ im = cv2.cvtColor(
 
 plt.imshow(im)
 
-# Chama a API de filtro Gaussiano
-# do OpenCV.
+
 im_gaussianblur = cv2.GaussianBlur(
     im,
     (5, 5),
@@ -88,7 +83,7 @@ plt.show()
 
 
 #%%
-# ETAPA 4 - Aplicar nitidez na imagem.
+
 
 im = cv2.imread('data/panda.jpg')
 
@@ -99,14 +94,14 @@ im = cv2.cvtColor(
 
 plt.imshow(im)
 
-# Operador de nitidez.
+
 sharpen_1 = np.array([
     [-1, -1, -1],
     [-1, 9, -1],
     [-1, -1, -1]
 ])
 
-# Usa filter2D para filtragem.
+
 im_sharpen1 = cv2.filter2D(
     im,
     -1,
@@ -116,14 +111,14 @@ im_sharpen1 = cv2.filter2D(
 plt.figure()
 plt.imshow(im_sharpen1)
 
-# Operador de nitidez 2.
+
 sharpen_2 = np.array([
     [0, -1, 0],
     [-1, 8, -1],
     [0, 1, 0]
 ]) / 4.0
 
-# Usa filter2D para filtragem.
+
 im_sharpen2 = cv2.filter2D(
     im,
     -1,

@@ -4,7 +4,7 @@ import numpy as np
 
 IMG = 'data/panda.jpg'
 
-# === a.py - Basic Operations + Color Space ===
+
 im = cv2.imread(IMG, 1)
 im_gray = cv2.imread(IMG, 0)
 im_RGB = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
@@ -14,7 +14,7 @@ assert im.dtype == np.uint8
 assert im.shape == (2600, 3914, 3)
 print("[OK] a.py - Basic ops + Color space")
 
-# === b.py - Geometric Transforms ===
+
 (h, w) = im.shape[:2]
 M = np.float32([[1, 0, 100], [0, 1, 200]])
 shifted = cv2.warpAffine(im, M, (w, h))
@@ -32,7 +32,7 @@ resized = cv2.resize(im_RGB, (2000, 3000), interpolation=cv2.INTER_NEAREST)
 assert resized.shape == (3000, 2000, 3)
 print("[OK] b.py - Geometric transforms")
 
-# === c.py - Grayscale Transforms ===
+
 def linear_trans(img, k, b=0):
     trans_list = [(np.float32(x) * k + b) for x in range(256)]
     trans_table = np.array(trans_list)
@@ -58,7 +58,7 @@ assert ret1 == 127.0
 assert ret2 > 0
 print("[OK] c.py - Grayscale transforms (Otsu threshold:", ret2, ")")
 
-# === d.py - Morphological Processing ===
+
 _, bin_img = cv2.threshold(im_gray, 0, 255, cv2.THRESH_OTSU)
 element = cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5))
 eroded = cv2.erode(bin_img, element)
@@ -67,7 +67,7 @@ assert eroded.shape == bin_img.shape
 assert dilated.shape == bin_img.shape
 print("[OK] d.py - Morphological processing")
 
-# === e.py - Image Filtering ===
+
 im_median = cv2.medianBlur(im, 5)
 im_mean = cv2.blur(im, (3, 3))
 im_gauss = cv2.GaussianBlur(im, (5, 5), 0)
